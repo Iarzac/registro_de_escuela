@@ -13,5 +13,5 @@ Este proyecto utiliza las siguientes bibliotecas:
 - `streamlit`
 - `sqlite3`
 - `pandas`
-
+- `fpdf`
 
