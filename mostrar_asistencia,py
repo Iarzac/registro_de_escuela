@@ -1,0 +1,26 @@
+import streamlit as st
+import sqlite3
+
+def mostrar_datos():
+    st.header("Mostrar Datos")
+
+    conexion = sqlite3.connect('escuela.db')
+    cursor = conexion.cursor()
+    
+    cursor.execute("SELECT * FROM materias")
+    materias = cursor.fetchall()
+
+    if materias:
+        st.table(materias)
+        st.write("### Asistencia Registrada:")
+        cursor.execute("SELECT * FROM asistencia")
+        asistencias = cursor.fetchall()
+        
+        if asistencias:
+            st.table(asistencias)
+        else:
+            st.warning("No hay asistencias registradas.")
+    else:
+        st.warning("No hay materias registradas.")
+
+    conexion.close()
